@@ -17,6 +17,7 @@ from virtwho import SECOND_HYPERVISOR_SECTION
 
 
 from virtwho.base import encrypt_password
+from virtwho.base import msg_search
 from virtwho.configure import hypervisor_create
 
 
@@ -310,7 +311,7 @@ class TestLibvirtNegative:
             and result["thread"] == 1
             # libvirt-local mode will be used to instead
             # when server option is disabled for libvirt-remote
-            and assertion["disable"] in result["error_msg"]
+            and msg_search(result["error_msg"], assertion["disable"])
         )
 
     @pytest.mark.tier2

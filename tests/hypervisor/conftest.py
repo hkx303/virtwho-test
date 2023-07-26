@@ -285,7 +285,10 @@ def libvirt_assertion():
         "Failed to connect socket to '/var/run/libvirt/libvirt-sock-ro'"
     )
     if "RHEL-9" in RHEL_COMPOSE:
-        server_disable_error = "Cannot use direct socket mode if no URI is set"
+        server_disable_error = [
+            "Cannot use direct socket mode if no URI is set",
+            "Fatal error during send virt guests",
+        ]
     data = {
         "type": {
             "invalid": {
