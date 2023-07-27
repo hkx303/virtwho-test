@@ -61,7 +61,7 @@ def esx_assertion():
             "file_name": "/etc/virt-who.d/esx.conf.txt",
             "warining_msg": "Configuration directory '/etc/virt-who.d/' "
             "does not have any '*.conf' files but is not empty",
-            "error_msg": "Error in libvirt backend",
+            "error_msg": "Fatal error during send virt guests",
         },
         "redundant_options": {
             "error_msg": "virt-who can't be started: no valid configuration found"
@@ -201,7 +201,7 @@ def kubevirt_assertion():
     """
     disable_error = "Failed to connect socket to '/var/run/libvirt/libvirt-sock-ro'"
     if "RHEL-9" in RHEL_COMPOSE:
-        disable_error = "Cannot use direct socket mode if no URI is set"
+        disable_error = "fails with exception"
     data = {
         "type": {
             "invalid": {
